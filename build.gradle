@@ -1,0 +1,36 @@
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java-library'
+
+repositories {
+    mavenLocal()
+    jcenter()
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("net.serenity-bdd:serenity-gradle-plugin:1.9.8") 
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'net.serenity-bdd.aggregator'  
+
+dependencies {
+    compile 'net.serenity-bdd:serenity-core:1.9.9'
+    compile 'net.serenity-bdd:serenity-junit:1.9.9'
+    compile 'net.serenity-bdd:serenity-screenplay:1.9.9'
+    compile 'net.serenity-bdd:serenity-screenplay-webdriver:1.9.9'
+    compile 'net.serenity-bdd:serenity-cucumber:1.9.5'
+    implementation 'net.serenity-bdd:serenity-screenplay-rest:1.9.20'
+
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.assertj:assertj-core:3.8.0'
+    testImplementation 'org.slf4j:slf4j-simple:1.7.21'
+}
