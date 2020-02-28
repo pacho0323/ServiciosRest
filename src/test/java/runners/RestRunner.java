@@ -9,9 +9,9 @@ import net.serenitybdd.cucumber.CucumberWithSerenity;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(features = { "src\\test\\resources\\features\\rest.feature" }
-        ,glue = {"steps" }
+         ,glue = {"steps" }
         ,snippets = CAMELCASE
-       // ,tags = "@Test2"
+       ,tags = "@Test3"
         		)
 public class RestRunner {
 }

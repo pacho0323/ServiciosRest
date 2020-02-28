@@ -13,7 +13,8 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath("net.serenity-bdd:serenity-gradle-plugin:1.9.8") 
+        classpath "net.serenity-bdd:serenity-gradle-plugin:2.1.8" 
+        classpath "net.serenity-bdd:serenity-single-page-report:2.1.8"           
     }
 }
 
@@ -22,15 +23,19 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'net.serenity-bdd.aggregator'  
 
-dependencies {
-    compile 'net.serenity-bdd:serenity-core:1.9.9'
-    compile 'net.serenity-bdd:serenity-junit:1.9.9'
-    compile 'net.serenity-bdd:serenity-screenplay:1.9.9'
-    compile 'net.serenity-bdd:serenity-screenplay-webdriver:1.9.9'
-    compile 'net.serenity-bdd:serenity-cucumber:1.9.5'
-    implementation 'net.serenity-bdd:serenity-screenplay-rest:1.9.20'
+serenity {
+    reports = ['single-page-html']
+}
 
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'org.assertj:assertj-core:3.8.0'
-    testImplementation 'org.slf4j:slf4j-simple:1.7.21'
+dependencies {
+    compile 'net.serenity-bdd:serenity-core:2.1.8'
+    compile 'net.serenity-bdd:serenity-junit:2.1.8'
+    compile 'net.serenity-bdd:serenity-screenplay:2.1.8'
+    compile 'net.serenity-bdd:serenity-screenplay-webdriver:2.1.8'
+    compile 'net.serenity-bdd:serenity-cucumber:1.9.5'
+    implementation 'net.serenity-bdd:serenity-screenplay-rest:2.1.8'
+
+    testCompile group: 'junit', name: 'junit', version: '4.13'
+    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.15.0'
+    testImplementation 'org.slf4j:slf4j-simple:1.7.30'
 }

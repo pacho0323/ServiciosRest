@@ -6,20 +6,21 @@ import static org.hamcrest.Matchers.equalTo;
 
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
-import questions.TheCode;
+import questions.TheCodeResponse;
 import tasks.DeleteUser;
 
 public class DeleteUsuarioStep {
 
-	@Cuando("^ingrese el dato a eliminar$")
-	public void ingreseElDatoAEliminar() {
+	@Cuando("^ingrese el id (\\d+)$")
+	public void ingreseElId(String id) {
 
-		theActorInTheSpotlight().attemptsTo(DeleteUser.withId());
-
+		theActorInTheSpotlight().attemptsTo(DeleteUser.withId(id));
 	}
+
 	@Entonces("^ver· el cÛdigo de respuesta (\\d+)$")
-	public void ver·ElCÛdigoDeRespuesta(int code) {
-		// Write code here that turns the phrase above into concrete actions
-		theActorInTheSpotlight().should(seeThat(TheCode.is(), equalTo(code)));
+	public void ver·ElCÛdigoDeRespuesta(String code ) {
+
+		theActorInTheSpotlight().should(
+				seeThat(TheCodeResponse.is(), equalTo(code)));
 	}
 }

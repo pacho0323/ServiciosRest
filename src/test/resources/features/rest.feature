@@ -2,28 +2,51 @@
 # encoding: iso-8859-1
 #Author: jbuiles@qvision.com.co
 Característica: Automatizar un servicio Rest
+  Como usuario deseo de una app
+  Quiero enviar unos datos
+  Para probar el resultado
 
   @Test1
-  Escenario: getUsuario
+  Esquema del escenario: Buscar usuario
     Dado que el usuario ingrese la url del servicio
-    Cuando ingrese el id
-    Entonces verá el código de respuesta
-      | 1 | George | Bluth | 200 |
+    Cuando ingrese el <id>
+    Entonces verá en la respuesta los datos
+      | <name> | <lastName> | <codeResponse> |
+
+    Ejemplos: 
+      | id | name   | lastName | codeResponse |
+      |  1 | George | Bluth    |          200 |
 
   @Test2
-  Escenario: Consultar usuarios
+  Esquema del escenario: Crear usuario
     Dado que el usuario ingrese la url del servicio
     Cuando ingrese los datos
-    Entonces verá el código de respuesta 201
+      | <name> | <lastName> |
+    Entonces el vera el usuario creado
+      | <name> | <lastName> | <codeResponse> |
+
+    Ejemplos: 
+      | name       | lastName | codeResponse |
+      | Sarah-Jane | Smith    |          201 |
 
   @Test3
-  Escenario: Actulizar usuarios
+  Esquema del escenario: Actulizar usuarios
     Dado que el usuario ingrese la url del servicio
     Cuando ingrese el dato a actualizar
-    Entonces verá el código de respuesta 200
+      | <name> | <lastName> |
+    Entonces el vera el usuario actualizado
+      | <name> | <lastName> | <codeResponse> |
+
+    Ejemplos: 
+      | name | lastName | codeResponse |
+      | jack | smith    |          200 |
 
   @Test4
-  Escenario: Eliminar usuario
+  Esquema del escenario: Eliminar usuario
     Dado que el usuario ingrese la url del servicio
-    Cuando ingrese el dato a eliminar
-    Entonces verá el código de respuesta 204
+    Cuando ingrese el id <id>
+    Entonces verá el código de respuesta <codeResponse>
+
+    Ejemplos: 
+      | id | codeResponse |
+      |  1 |          204 |
